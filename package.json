@@ -6,6 +6,7 @@
     "title": "Simple Search",
     "type": "app",
     "static": true,
+    "handle": "surch",
     "uses": {
         "types":["links", "photos", "places", "contacts"],
         "services":["twitter", "instagram"]
