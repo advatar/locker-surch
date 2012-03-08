@@ -20,7 +20,7 @@ $(function() {
 
     $.getJSON(baseUrl + '/Me/search/query', {type:'link', q:q + '*', 'limit':10, 'sort':'true'}, function(data) {
         $("#loading-links").fadeOut('fast');
-        if(!data || !data.length) return $("#links").append("No results");
+        if(!data || !data.length) return $("#links").hide();
         var html = "";
         for(var i in data)
         {
@@ -50,7 +50,9 @@ $(function() {
     });
     $.getJSON(baseUrl + '/Me/search/query', {type:'photo', q:q + '*', 'limit':10}, function(data) {
         $("#loading-photos").fadeOut('fast');
-        if(!data || !data.length) return $("#photos").append("No results");
+        //if(!data || !data.length) return $("#photos").append("No results");
+        if(!data || !data.length) return $("#photos").hide();
+        
         var html = "";
         for(var i in data)
         {
@@ -60,7 +62,8 @@ $(function() {
     });
     $.getJSON(baseUrl + '/Me/search/query', {type:'contact', q:q + '*', 'limit':10}, function(data) {
         $("#loading-people").fadeOut('fast');
-        if(!data || !data.length) return $("#people").append("No results");
+        //if(!data || !data.length) return $("#people").append("No results");
+        if(!data || !data.length) return $("#people").hide();
         var html = "";
         for(var i in data)
         {
@@ -71,7 +74,9 @@ $(function() {
     });
     $.getJSON(baseUrl + '/Me/search/query', {type:'place', q:q + '*', 'limit':10}, function(data) {
         $("#loading-places").fadeOut('fast');
-        if(!data || !data.length) return $("#places").append("No results");
+        //if(!data || !data.length) return $("#places").append("No results");
+        if(!data || !data.length) return $("#places").hide();
+        
         var html = "";
         for(var i in data)
         {
@@ -79,6 +84,11 @@ $(function() {
         }
         $("#places").append(html);
     });
+
+	var remote = 'https://api.duckduckgo.com/?q='+encodeURIComponent(q)+'&format=json';
+	$.get(remote,function(j) {},'jsonp')
+          .success(function(data) { ddgCallback(data); } );
+			
 
     $("#searchform").submit(function(e) {
         e.preventDefault();
@@ -96,4 +106,26 @@ $(function() {
         window.location = window.location.origin + window.location.pathname + '#' + $("#search").val();
         window.location.reload(true);
     }
+    
+    var ddgCallback = function(json) {
+    	$("#loading-ddg").fadeOut('fast');
+    	$('#ddg').empty();
+  		$.each(json.RelatedTopics, function()
+		{
+			console.log("name: " + this.Name)
+			if(this.Name === undefined)
+			{
+				if(this.Text !== undefined)
+				{
+					$('#ddg').append("<div id='relatedTopic'>" + this.Result + "</div>");
+				}
+			}else{
+				$('#ddg').append("<h3>" + this.Name + "</h3>");
+				$.each(this.Topics, function()
+				{
+					$('#ddg').append("<div id='relatedTopic'>" + this.Result + "</div>");
+				});
+			}
+		});
+  	}
 });
