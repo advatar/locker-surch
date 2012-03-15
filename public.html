@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8">
+  </head>
+
+  <body>
+    <div>
+      <h1 class="searchheader">Public <span class="light">Simple</span> Search:</h1>
+      <form id="searchform" action="#" method="get" accept-charset="utf-8">
+        <input type="text" name="search" value="" id="search">
+        <img src="search.jpg" class="searchbutton" border="0">
+      </form>
+    </div>
+    <div class="container">
+      <div class="result" id="people"><h2>People: <img class="loading" id="loading-people" src="loading.gif"></h2></div>
+      <div class="result" id="photos"><h2>Photos: <img class="loading" id="loading-photos" src="loading.gif"></h2></div>
+      <div class="result" id="places"><h2>Places: <img class="loading" id="loading-places" src="loading.gif"></h2></div>
+      <div class="result" id="links"><h2>Links: <img class="loading" id="loading-links" src="loading.gif"></h2></div>
+      <div class="result" id="ddghead"><h2>Duck Duck Go: <img class="loading" id="loading-ddg" src="loading.gif"></h2>
+        <div id="ddg"></div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://localhost:8042/dashboard/auth/v1/auth.js"></script>
+    <script src="script.js"></script>
+    <script>
+      $(function() {
+        var singly = $.singly({appName: 'Simple Search'});
+      });
+    </script>
+  </body>
+</html>
