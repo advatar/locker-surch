@@ -5,6 +5,7 @@
   "repository": {
     "title": "Simple Search",
     "type": "app",
+    "github": "https://github.com/advatar/surch",
     "static": true,
     "handle": "surch",
     "uses": {
