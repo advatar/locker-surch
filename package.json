@@ -5,6 +5,7 @@
   "author":"advatar"
   "repository": {
     "title": "Simple Search",
+    "handle": "locker-surch",
     "type": "app",
     "github": "https://github.com/advatar/locker-surch",
     "url": "https://github.com/advatar/locker-surch",
