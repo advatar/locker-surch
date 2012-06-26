@@ -2,14 +2,14 @@
   "name": "Surch",
   "version": "0.0.1",
   "description": "Simply search your photos, contacts, places, and links.",
-  "author":"advatar"
+  "author":"advatar",
   "repository": {
     "title": "Simple Search",
     "handle": "locker-surch",
     "type": "app",
     "github": "https://github.com/advatar/locker-surch",
     "url": "https://github.com/advatar/locker-surch",
-    "static": true,
+    "static": "true",
     "handle": "surch",
     "uses": {
         "types":["links", "photos", "places", "contacts"],
