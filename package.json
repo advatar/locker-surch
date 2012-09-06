@@ -10,6 +10,7 @@
     "github": "https://github.com/advatar/locker-surch",
     "url": "https://github.com/advatar/locker-surch",
     "static": "true",
+    "status":"unstable",
     "handle": "surch",
     "uses": {
         "types":["links", "photos", "places", "contacts"],
